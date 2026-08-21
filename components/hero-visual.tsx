@@ -1,4 +1,4 @@
-import { ChatCircleDots, Robot, TrendDown } from "@phosphor-icons/react/dist/ssr";
+import { Robot, TrendDown } from "@phosphor-icons/react/dist/ssr";
 
 const bars = [38, 52, 44, 61, 55, 72, 64];
 
@@ -81,18 +81,22 @@ export function HeroVisual() {
           </div>
         </div>
 
-        <div className="absolute -bottom-7 -left-6 w-60 sm:-left-10">
-          <div className="animate-bounce-in relative flex items-start gap-3 rounded-[1.4rem] rounded-bl-md border border-border bg-card p-4">
-            <span className="relative flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-600 text-white">
+        <div className="animate-float absolute -bottom-7 -left-6 w-60 sm:-left-10">
+          <div className="animate-bounce-in relative flex items-start gap-3 rounded-[1.4rem] rounded-bl-md border border-border/70 bg-card/95 p-4 shadow-xl shadow-ink/10 backdrop-blur-sm">
+            <span className="relative flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-2px_3px_0_rgba(87,18,58,0.35)]">
               <Robot weight="fill" className="size-5" />
-              <span className="absolute -right-0.5 -top-0.5 flex size-2.5 items-center justify-center rounded-full bg-card">
+              <span className="absolute -right-0.5 -top-0.5 flex size-3 items-center justify-center rounded-full bg-card">
                 <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" />
               </span>
             </span>
             <div className="min-w-0">
-              <p className="text-xs font-semibold text-ink">Oslo · Go Assist</p>
-              <p className="mt-0.5 flex items-center gap-1 text-xs text-ink-soft">
-                <ChatCircleDots weight="fill" className="size-3.5 shrink-0 text-brand-500" />
+              <div className="flex items-center gap-1.5">
+                <p className="text-xs font-bold text-ink">Oslo</p>
+                <span className="rounded-full bg-brand-50 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-600">
+                  Go Assist
+                </span>
+              </div>
+              <p className="mt-1 text-xs text-ink-soft">
                 3 conducteurs en attente
               </p>
             </div>
