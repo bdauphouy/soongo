@@ -27,7 +27,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="fr"
       className={`${plusJakartaSans.variable} ${parkinsans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-surface text-ink">
+      <body className="min-h-full flex flex-col overflow-x-hidden bg-surface text-ink">
         {children}
         <BookingWidget />
       </body>
