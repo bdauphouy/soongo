@@ -7,8 +7,8 @@ export function ImageBanner() {
       <Reveal>
         <div className="relative h-[380px] overflow-hidden rounded-3xl sm:h-[440px]">
           <Image
-            src="https://picsum.photos/seed/soongo-fleet-yard/1800/1000"
-            alt="Parc de véhicules professionnels garés côte à côte"
+            src="https://images.unsplash.com/photo-1587813369290-091c9d432daf?q=80&w=1800&auto=format&fit=crop"
+            alt="Flotte de véhicules blancs garés en rangée ordonnée sous un ciel dégagé"
             fill
             sizes="(min-width: 1024px) 1152px, 100vw"
             className="object-cover"
