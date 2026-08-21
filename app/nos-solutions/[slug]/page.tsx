@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
+import { AnimatedStat } from "@/components/animated-stat";
 import { TimelineFeatures } from "@/components/timeline-features";
 import { Button } from "@/components/ui/button";
 import { pageSolutions, solutions } from "@/lib/solutions";
@@ -40,7 +41,9 @@ export default async function SolutionPage(
 
   if (!solution) notFound();
 
-  const others = solutions.filter((s) => s.slug !== solution.slug);
+  const others = solutions.filter(
+    (s) => s.slug !== solution.slug && s.slug !== "go-assist"
+  );
   const pillars = "pillars" in solution ? solution.pillars : undefined;
   const stats = "stats" in solution ? solution.stats : undefined;
 
@@ -101,7 +104,7 @@ export default async function SolutionPage(
                   <Reveal key={stat.label} delay={0.1 + i * 0.08}>
                     <div>
                       <p className="bg-gradient-to-br from-brand-600 to-brand-400 bg-clip-text text-6xl font-bold text-transparent sm:text-7xl">
-                        {stat.value}
+                        <AnimatedStat value={stat.value} delay={0.1 + i * 0.08} />
                       </p>
                       <p className="mt-2 max-w-xs text-base text-ink-soft">
                         {stat.label}
@@ -168,17 +171,13 @@ export default async function SolutionPage(
             </h2>
           </Reveal>
 
-          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((other, i) => {
               const OtherIcon = other.icon;
-              const href =
-                other.slug === "go-assist"
-                  ? "/#go-assist"
-                  : `/nos-solutions/${other.slug}`;
               return (
                 <Reveal key={other.slug} delay={i * 0.06}>
                   <Link
-                    href={href}
+                    href={`/nos-solutions/${other.slug}`}
                     className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100"
                   >
                     <span className="flex size-12 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
