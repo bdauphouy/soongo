@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { DemoButton } from "@/components/demo-button";
 import { Reveal } from "@/components/reveal";
 
 export function CtaBand() {
   return (
-    <section id="demo" className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
+    <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 lg:px-8 lg:pb-28">
       <Reveal>
         <div className="relative overflow-hidden rounded-3xl bg-brand-600 px-8 py-16 text-center sm:px-16 sm:py-20">
           <div
@@ -24,9 +24,9 @@ export function CtaBand() {
             parc, en moins de trente minutes.
           </p>
           <div className="relative mt-8 flex justify-center">
-            <Button href="mailto:demo@soongo.co" variant="invert" withArrow>
+            <DemoButton variant="invert" withArrow>
               Demander une démo
-            </Button>
+            </DemoButton>
           </div>
         </div>
       </Reveal>

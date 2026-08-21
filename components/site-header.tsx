@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { DemoButton } from "@/components/demo-button";
 import { pageSolutions, solutionCardStyles, solutionHref } from "@/lib/solutions";
 import logo from "@/public/brand/logo-soongo.png";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react/dist/ssr";
@@ -81,9 +81,7 @@ export function SiteHeader() {
           </nav>
 
           <div className="hidden lg:block">
-            <Button href="/#demo" withArrow>
-              Demander une démo
-            </Button>
+            <DemoButton withArrow>Demander une démo</DemoButton>
           </div>
 
           <button
@@ -189,9 +187,13 @@ export function SiteHeader() {
                   </a>
                 ))}
               </nav>
-              <Button href="/#demo" withArrow className="mt-4 w-full">
+              <DemoButton
+                withArrow
+                className="mt-4 w-full"
+                onClick={() => setOpen(false)}
+              >
                 Demander une démo
-              </Button>
+              </DemoButton>
             </div>
           </div>
         )}

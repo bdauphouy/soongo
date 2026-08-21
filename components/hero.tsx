@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { DemoButton } from "@/components/demo-button";
 import { HeroVisual } from "@/components/hero-visual";
 import { Reveal } from "@/components/reveal";
 
@@ -14,9 +15,7 @@ export function Hero() {
           coûts de mobilité, pour que votre flotte roule sans friction.
         </p>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button href="#demo" withArrow>
-            Demander une démo
-          </Button>
+          <DemoButton withArrow>Demander une démo</DemoButton>
           <Button href="#solutions" variant="secondary">
             Découvrir les solutions
           </Button>

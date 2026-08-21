@@ -2,7 +2,8 @@ import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 
 type ButtonProps = {
-  href: string;
+  href?: string;
+  onClick?: () => void;
   variant?: "primary" | "secondary" | "ghost" | "invert";
   withArrow?: boolean;
   className?: string;
@@ -21,16 +22,16 @@ const variants = {
 
 export function Button({
   href,
+  onClick,
   variant = "primary",
   withArrow = false,
   className = "",
   children,
 }: ButtonProps) {
-  return (
-    <Link
-      href={href}
-      className={`group inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-[15px] font-semibold transition-[background,border-color,box-shadow,transform,color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] active:scale-[0.94] ${variants[variant]} ${className}`}
-    >
+  const classes = `group inline-flex cursor-pointer items-center justify-center gap-2 whitespace-nowrap rounded-full px-6 py-3 text-[15px] font-semibold transition-[background,border-color,box-shadow,transform,color] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] active:scale-[0.94] ${variants[variant]} ${className}`;
+
+  const content = (
+    <>
       {children}
       {withArrow && (
         <ArrowRight
@@ -38,6 +39,20 @@ export function Button({
           className="size-4 transition-transform duration-300 ease-out group-hover:translate-x-1"
         />
       )}
+    </>
+  );
+
+  if (!href) {
+    return (
+      <button type="button" onClick={onClick} className={classes}>
+        {content}
+      </button>
+    );
+  }
+
+  return (
+    <Link href={href} onClick={onClick} className={classes}>
+      {content}
     </Link>
   );
 }

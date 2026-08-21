@@ -6,6 +6,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { CtaBand } from "@/components/cta-band";
 import { Reveal } from "@/components/reveal";
 import { AnimatedStat } from "@/components/animated-stat";
+import { DemoButton } from "@/components/demo-button";
 import { TimelineFeatures } from "@/components/timeline-features";
 import { Button } from "@/components/ui/button";
 import { pageSolutions, solutions } from "@/lib/solutions";
@@ -89,9 +90,7 @@ export default async function SolutionPage(
 
             <Reveal delay={0.25}>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-                <Button href="mailto:demo@soongo.co" withArrow>
-                  Demander une démo
-                </Button>
+                <DemoButton withArrow>Demander une démo</DemoButton>
                 <Button href="/#solutions" variant="secondary">
                   Voir toutes les solutions
                 </Button>

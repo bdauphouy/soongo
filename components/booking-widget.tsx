@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Cal, { getCalApi } from "@calcom/embed-react";
 import { CalendarCheck, X } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
+import { onOpenBookingDemo } from "@/lib/booking-demo";
 
 const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK;
 const CAL_NAMESPACE = "demo-soongo";
@@ -20,6 +21,13 @@ export function BookingWidget() {
       return next;
     });
   }
+
+  useEffect(() => {
+    return onOpenBookingDemo(() => {
+      setRendered(true);
+      setOpen(true);
+    });
+  }, []);
 
   useEffect(() => {
     if (!CAL_LINK || !open) return;
