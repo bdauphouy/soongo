@@ -14,6 +14,15 @@ export const solutions = [
     description:
       "Commandes, entretien, sinistres, amendes : Go Pilot automatise les tâches opérationnelles qui ralentissent vos gestionnaires de flotte.",
     icon: SteeringWheel,
+    kind: "stats-only",
+    cardStyle: {
+      wrap: "bg-ink text-white",
+      icon: "bg-brand-600 text-white",
+      tagline: "text-brand-400",
+      body: "text-white/70",
+      link: "text-white",
+      span: "sm:col-span-2 lg:col-span-2",
+    },
     stats: [
       { value: "25%", label: "de gain de temps garanti" },
       { value: "30+", label: "contrôles et alertes automatiques" },
@@ -35,6 +44,15 @@ export const solutions = [
     description:
       "Centralisez les données de votre parc et suivez votre coût total de possession en temps réel, grâce à des tableaux de bord clairs.",
     icon: ChartLineUp,
+    kind: "stats-only",
+    cardStyle: {
+      wrap: "bg-card text-ink border border-border",
+      icon: "bg-brand-50 text-brand-600",
+      tagline: "text-brand-600",
+      body: "text-ink-soft",
+      link: "text-brand-600",
+      span: "sm:col-span-1 lg:col-span-1",
+    },
     stats: [
       { value: "150+", label: "KPIs à votre disposition" },
       { value: "100%", label: "des données centralisées automatiquement" },
@@ -56,6 +74,15 @@ export const solutions = [
     description:
       "Go Optimize identifie et active les leviers qui réduisent vos coûts et vos émissions de CO2, sans effort de votre part.",
     icon: Sparkle,
+    kind: "pillars",
+    cardStyle: {
+      wrap: "bg-brand-50 text-ink",
+      icon: "bg-white text-brand-600",
+      tagline: "text-brand-700",
+      body: "text-ink-soft",
+      link: "text-brand-700",
+      span: "sm:col-span-1 lg:col-span-1",
+    },
     stats: [
       { value: "50", label: "leviers d'optimisation identifiés" },
       { value: "100%", label: "des catégories de TCO couvertes" },
@@ -94,6 +121,15 @@ export const solutions = [
     description:
       "Collectez les données de vos véhicules en temps réel, sans installation ni matériel supplémentaire à gérer.",
     icon: Broadcast,
+    kind: "pillars",
+    cardStyle: {
+      wrap: "bg-card text-ink border border-border",
+      icon: "bg-brand-50 text-brand-600",
+      tagline: "text-brand-600",
+      body: "text-ink-soft",
+      link: "text-brand-600",
+      span: "sm:col-span-2 lg:col-span-2",
+    },
     stats: [
       { value: "95%", label: "des cas sans boîtier physique" },
       { value: "15%", label: "d'économies sur la consommation" },
@@ -137,6 +173,15 @@ export const solutions = [
     description:
       "Oslo, l'agent IA de Go Assist, répond aux questions de vos conducteurs à toute heure, sans mobiliser vos équipes.",
     icon: Robot,
+    kind: "stats-only",
+    cardStyle: {
+      wrap: "bg-brand-600 text-white",
+      icon: "bg-white text-brand-600",
+      tagline: "text-white/85",
+      body: "text-white/75",
+      link: "text-white",
+      span: "sm:col-span-2 lg:col-span-2",
+    },
     stats: [
       { value: "24/7", label: "assistance téléphonique, 365 jours par an" },
       { value: "0", label: "installation requise pour vos conducteurs" },
@@ -159,46 +204,3 @@ export const pageSolutions = solutions.filter((s) => s.slug !== "go-assist");
 export function solutionHref(slug: Solution["slug"]) {
   return slug === "go-assist" ? "/#go-assist" : `/nos-solutions/${slug}`;
 }
-
-export const solutionCardStyles = [
-  {
-    wrap: "bg-ink text-white",
-    icon: "bg-brand-600 text-white",
-    tagline: "text-brand-400",
-    body: "text-white/70",
-    link: "text-white",
-    span: "sm:col-span-2 lg:col-span-2",
-  },
-  {
-    wrap: "bg-card text-ink border border-border",
-    icon: "bg-brand-50 text-brand-600",
-    tagline: "text-brand-600",
-    body: "text-ink-soft",
-    link: "text-brand-600",
-    span: "sm:col-span-1 lg:col-span-1",
-  },
-  {
-    wrap: "bg-brand-50 text-ink",
-    icon: "bg-white text-brand-600",
-    tagline: "text-brand-700",
-    body: "text-ink-soft",
-    link: "text-brand-700",
-    span: "sm:col-span-1 lg:col-span-1",
-  },
-  {
-    wrap: "bg-card text-ink border border-border",
-    icon: "bg-brand-50 text-brand-600",
-    tagline: "text-brand-600",
-    body: "text-ink-soft",
-    link: "text-brand-600",
-    span: "sm:col-span-2 lg:col-span-2",
-  },
-  {
-    wrap: "bg-brand-600 text-white",
-    icon: "bg-white text-brand-600",
-    tagline: "text-white/85",
-    body: "text-white/75",
-    link: "text-white",
-    span: "sm:col-span-2 lg:col-span-2",
-  },
-] as const;

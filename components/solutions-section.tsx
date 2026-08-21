@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { solutionCardStyles, solutionHref, solutions } from "@/lib/solutions";
+import { solutionHref, solutions } from "@/lib/solutions";
 import { Reveal } from "@/components/reveal";
 
 export function SolutionsSection() {
@@ -21,7 +21,7 @@ export function SolutionsSection() {
 
       <div className="mt-10 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {solutions.map((solution, i) => {
-          const style = solutionCardStyles[i];
+          const style = solution.cardStyle;
           const Icon = solution.icon;
           const isAssist = solution.slug === "go-assist";
 

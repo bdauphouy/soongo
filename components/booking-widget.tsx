@@ -5,29 +5,19 @@ import Cal, { getCalApi } from "@calcom/embed-react";
 import { CalendarCheck, X } from "@phosphor-icons/react/dist/ssr";
 import { Button } from "@/components/ui/button";
 import { onOpenBookingDemo } from "@/lib/booking-demo";
+import { useDismissableOverlay } from "@/lib/use-dismissable-overlay";
 
 const CAL_LINK = process.env.NEXT_PUBLIC_CAL_LINK;
 const CAL_NAMESPACE = "demo-soongo";
 
 export function BookingWidget() {
-  const [open, setOpen] = useState(false);
-  const [rendered, setRendered] = useState(false);
+  const { open, mounted: rendered, show, hide, toggle, onAnimationEnd } =
+    useDismissableOverlay();
   const [calReady, setCalReady] = useState(false);
 
-  function handleToggle() {
-    setOpen((v) => {
-      const next = !v;
-      if (next) setRendered(true);
-      return next;
-    });
-  }
-
   useEffect(() => {
-    return onOpenBookingDemo(() => {
-      setRendered(true);
-      setOpen(true);
-    });
-  }, []);
+    return onOpenBookingDemo(show);
+  }, [show]);
 
   useEffect(() => {
     if (!CAL_LINK || !open) return;
@@ -54,9 +44,7 @@ export function BookingWidget() {
     <div className="fixed bottom-5 right-5 z-50 sm:bottom-6 sm:right-6">
       {rendered && (
         <div
-          onAnimationEnd={() => {
-            if (!open) setRendered(false);
-          }}
+          onAnimationEnd={onAnimationEnd}
           className={`${open ? "animate-bounce-in" : "animate-bounce-out"} absolute bottom-[calc(100%+0.75rem)] right-0 flex h-[32rem] w-[calc(100vw-2.5rem)] max-w-96 flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-2xl shadow-ink/15`}
         >
           <div className="absolute inset-x-0 top-0 z-10 p-3">
@@ -76,7 +64,7 @@ export function BookingWidget() {
               </div>
               <button
                 type="button"
-                onClick={() => setOpen(false)}
+                onClick={hide}
                 aria-label="Fermer"
                 className="flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full text-ink-soft transition-colors hover:bg-surface-soft hover:text-ink"
               >
@@ -120,7 +108,7 @@ export function BookingWidget() {
 
       <button
         type="button"
-        onClick={handleToggle}
+        onClick={toggle}
         aria-label={open ? "Fermer la réservation de démo" : "Réserver une démo"}
         aria-expanded={open}
         className="btn-grain flex size-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-3px_5px_0_rgba(87,18,58,0.35),0_10px_20px_-10px_rgba(255,31,120,0.55)] transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] after:content-[''] after:absolute after:inset-0 after:z-[-1] after:rounded-[inherit] after:bg-brand-900/25 after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100 active:scale-90 active:shadow-[inset_0_2px_4px_0_rgba(87,18,58,0.45),inset_0_-1px_0_0_rgba(255,255,255,0.15)]"

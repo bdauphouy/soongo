@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Parkinsans, Plus_Jakarta_Sans } from "next/font/google";
 import { BookingWidget } from "@/components/booking-widget";
+import { SiteHeader } from "@/components/site-header";
+import { CtaBand } from "@/components/cta-band";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -28,7 +31,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${plusJakartaSans.variable} ${parkinsans.variable} h-full overflow-x-hidden antialiased`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden bg-surface text-ink">
-        {children}
+        <SiteHeader />
+        <main className="flex-1">
+          {children}
+          <CtaBand />
+        </main>
+        <SiteFooter />
         <BookingWidget />
       </body>
     </html>

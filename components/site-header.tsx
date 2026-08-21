@@ -1,7 +1,8 @@
 "use client";
 
 import { DemoButton } from "@/components/demo-button";
-import { pageSolutions, solutionCardStyles, solutionHref } from "@/lib/solutions";
+import { pageSolutions, solutionHref } from "@/lib/solutions";
+import { useDismissableOverlay } from "@/lib/use-dismissable-overlay";
 import logo from "@/public/brand/logo-soongo.png";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
@@ -15,8 +16,13 @@ const links = [
 ];
 
 export function SiteHeader() {
-  const [open, setOpen] = useState(false);
-  const [menuRendered, setMenuRendered] = useState(false);
+  const {
+    open,
+    mounted: menuRendered,
+    hide: closeMenu,
+    toggle: toggleMenu,
+    onAnimationEnd: onMenuAnimationEnd,
+  } = useDismissableOverlay();
   const [solutionsOpen, setSolutionsOpen] = useState(false);
   const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -27,23 +33,17 @@ export function SiteHeader() {
 
     function handleClickOutside(e: MouseEvent) {
       if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
-        setOpen(false);
+        closeMenu();
       }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [open]);
+  }, [open, closeMenu]);
 
   function handleToggleMenu() {
-    setOpen((v) => {
-      const next = !v;
-      if (next) {
-        setMenuRendered(true);
-        setMobileSolutionsOpen(false);
-      }
-      return next;
-    });
+    if (!open) setMobileSolutionsOpen(false);
+    toggleMenu();
   }
 
   function openSolutions() {
@@ -134,8 +134,8 @@ export function SiteHeader() {
             }`}
           >
             <div className="grid grid-cols-4 gap-3">
-              {pageSolutions.map((solution, i) => {
-                const style = solutionCardStyles[i];
+              {pageSolutions.map((solution) => {
+                const style = solution.cardStyle;
                 const Icon = solution.icon;
 
                 return (
@@ -180,9 +180,7 @@ export function SiteHeader() {
         {menuRendered && (
           <div className="absolute inset-x-0 top-full z-40 mt-3 lg:hidden">
             <div
-              onAnimationEnd={() => {
-                if (!open) setMenuRendered(false);
-              }}
+              onAnimationEnd={onMenuAnimationEnd}
               className={`${open ? "animate-bounce-in" : "animate-bounce-out"} origin-top rounded-[2rem] border border-border bg-card p-4 shadow-2xl shadow-ink/10`}
             >
               <nav className="flex flex-col gap-1">
@@ -216,7 +214,7 @@ export function SiteHeader() {
                             <a
                               key={solution.slug}
                               href={solutionHref(solution.slug)}
-                              onClick={() => setOpen(false)}
+                              onClick={closeMenu}
                               className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-soft hover:text-ink"
                             >
                               <Icon
@@ -236,7 +234,7 @@ export function SiteHeader() {
                   <a
                     key={link.href}
                     href={link.href}
-                    onClick={() => setOpen(false)}
+                    onClick={closeMenu}
                     className="rounded-2xl px-3 py-3 text-base font-medium text-ink-soft hover:bg-surface-soft hover:text-ink"
                   >
                     {link.label}
@@ -246,7 +244,7 @@ export function SiteHeader() {
               <DemoButton
                 withArrow
                 className="mt-4 w-full"
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
               >
                 Demander une démo
               </DemoButton>
