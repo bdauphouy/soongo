@@ -5,7 +5,7 @@ import { Reveal } from "@/components/reveal";
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
+    <section id="solutions" className="mx-auto max-w-7xl scroll-mt-28 px-4 py-20 sm:px-6 lg:px-8 lg:py-28">
       <Reveal className="max-w-2xl">
         <p className="text-xs font-semibold uppercase text-brand-600">
           Nos solutions

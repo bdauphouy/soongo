@@ -32,7 +32,7 @@ function Pill({ label, icon: Icon }: (typeof integrations)[number]) {
 
 export function EcosystemMarquee() {
   return (
-    <section id="ecosysteme" className="py-20 lg:py-28">
+    <section id="ecosysteme" className="scroll-mt-28 py-20 lg:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <Reveal className="max-w-2xl">
           <h2 className="text-3xl font-bold text-ink sm:text-4xl">
