@@ -353,13 +353,22 @@ export function TimelineFeatures({
   );
 
   const fallback = (
-    <div className="grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2">
+    <div className="mx-auto max-w-2xl px-4 pt-12 sm:px-6">
       {features.map((feature, i) => (
-        <div key={feature}>
-          <span className="text-2xl font-extrabold text-brand-600 lg:text-3xl">
-            {i + 1}
-          </span>
-          <p className="mt-3 text-base font-semibold leading-snug text-ink lg:text-lg">
+        <div key={feature} className="flex gap-4">
+          <div className="flex flex-col items-center">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-600 text-sm font-bold text-white">
+              {i + 1}
+            </span>
+            {i < features.length - 1 && (
+              <span className="w-px flex-1 bg-border" aria-hidden />
+            )}
+          </div>
+          <p
+            className={`text-base font-semibold leading-snug text-ink ${
+              i < features.length - 1 ? "pb-8" : ""
+            }`}
+          >
             {feature}
           </p>
         </div>
@@ -386,10 +395,7 @@ export function TimelineFeatures({
           <TitleText eyebrow={eyebrow} title={title} />
         </Reveal>
 
-        <div className="lg:hidden">
-          {fallback}
-          <DemoReminder />
-        </div>
+        <div className="lg:hidden">{fallback}</div>
 
         <div
           ref={pinRef}
