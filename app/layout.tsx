@@ -28,9 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${plusJakartaSans.variable} ${parkinsans.variable} h-full overflow-x-hidden antialiased`}
+      className={`${plusJakartaSans.variable} ${parkinsans.variable} h-full overflow-x-clip antialiased`}
     >
-      <body className="min-h-full flex flex-col overflow-x-hidden bg-surface text-ink">
+      <body className="min-h-full flex flex-col overflow-x-clip bg-surface text-ink">
         <SiteHeader />
         <main className="flex-1">
           {children}
