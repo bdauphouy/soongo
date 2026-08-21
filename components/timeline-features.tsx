@@ -12,6 +12,7 @@ import {
   type MotionValue,
 } from "motion/react";
 import { useRef, type ReactNode } from "react";
+import { DemoButton } from "@/components/demo-button";
 import { Reveal } from "@/components/reveal";
 
 const PER_ROW = 2;
@@ -239,6 +240,43 @@ function StopContent({
   );
 }
 
+function DemoReminder() {
+  return (
+    <Reveal className="mt-16 flex justify-center px-4 sm:px-6 lg:px-8">
+      <DemoButton withArrow>Demander une démo</DemoButton>
+    </Reveal>
+  );
+}
+
+function EndReminder({
+  end,
+  W,
+  H,
+  scrollYProgress,
+}: {
+  end: { x: number; y: number };
+  W: number;
+  H: number;
+  scrollYProgress: MotionValue<number>;
+}) {
+  const fadeStart = Math.max(DRAW_END - 0.05, 0);
+  const opacity = useTransform(scrollYProgress, [fadeStart, DRAW_END], [0, 1]);
+  const scale = useTransform(scrollYProgress, [fadeStart, DRAW_END], [0.85, 1]);
+  const left = `${(end.x / W) * 100}%`;
+  const top = `${(end.y / H) * 100}%`;
+
+  return (
+    <div
+      className="absolute"
+      style={{ left, top, transform: "translate(-50%, -50%)" }}
+    >
+      <motion.div style={{ opacity, scale }}>
+        <DemoButton withArrow>Demander une démo</DemoButton>
+      </motion.div>
+    </div>
+  );
+}
+
 function TitleText({ eyebrow, title }: { eyebrow: string; title: ReactNode }) {
   return (
     <div className="mx-auto max-w-2xl">
@@ -336,6 +374,7 @@ export function TimelineFeatures({
           <TitleText eyebrow={eyebrow} title={title} />
         </Reveal>
         {fallback}
+        <DemoReminder />
       </div>
     );
   }
@@ -347,7 +386,10 @@ export function TimelineFeatures({
           <TitleText eyebrow={eyebrow} title={title} />
         </Reveal>
 
-        <div className="lg:hidden">{fallback}</div>
+        <div className="lg:hidden">
+          {fallback}
+          <DemoReminder />
+        </div>
 
         <div
           ref={pinRef}
@@ -399,6 +441,13 @@ export function TimelineFeatures({
                   scrollYProgress={scrollYProgress}
                 />
               ))}
+
+              <EndReminder
+                end={pointAt(1)}
+                W={W}
+                H={H}
+                scrollYProgress={scrollYProgress}
+              />
             </motion.div>
           </div>
         </div>
