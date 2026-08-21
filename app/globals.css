@@ -16,7 +16,7 @@
   --color-brand-700: #dc0f61;
   --color-brand-900: #57123a;
 
-  --font-jumper: "Jumper PERSONAL USE ONLY Regular", var(--font-body), sans-serif;
+  --font-heading: var(--font-parkinsans), var(--font-body), sans-serif;
 }
 
 @theme inline {
@@ -41,7 +41,8 @@
 h1,
 h2,
 h3 {
-  font-family: var(--font-jumper);
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
 body {
