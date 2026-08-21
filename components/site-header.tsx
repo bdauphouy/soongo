@@ -118,7 +118,7 @@ export function SiteHeader() {
                   <Link
                     key={solution.slug}
                     href={solutionHref(solution.slug)}
-                    className={`group/tile flex flex-col rounded-2xl p-4 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 hover:scale-[1.02] ${style.wrap} ${style.span}`}
+                    className={`group/tile flex flex-col rounded-2xl p-4 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 ${style.wrap} ${style.span}`}
                   >
                     <span
                       className={`flex size-9 items-center justify-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover/tile:scale-110 group-hover/tile:-rotate-6 ${style.icon}`}

@@ -32,7 +32,7 @@ export function ProofStrip() {
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-6 px-4 py-16 sm:grid-cols-3 sm:px-6 lg:px-8 lg:py-20">
         {stats.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 0.1}>
-            <div className="group relative flex h-full min-h-[280px] flex-col justify-end overflow-hidden rounded-3xl transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 hover:scale-[1.015] active:scale-[0.99]">
+            <div className="group relative flex h-full min-h-[280px] flex-col justify-end overflow-hidden rounded-3xl transition-transform duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5">
               <Image
                 src={`${stat.image}?q=80&w=800&auto=format&fit=crop`}
                 alt={stat.alt}
