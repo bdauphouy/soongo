@@ -13,9 +13,13 @@ export function BookingWidget() {
   const [rendered, setRendered] = useState(false);
   const [calReady, setCalReady] = useState(false);
 
-  useEffect(() => {
-    if (open) setRendered(true);
-  }, [open]);
+  function handleToggle() {
+    setOpen((v) => {
+      const next = !v;
+      if (next) setRendered(true);
+      return next;
+    });
+  }
 
   useEffect(() => {
     if (!CAL_LINK || !open) return;
@@ -108,7 +112,7 @@ export function BookingWidget() {
 
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={handleToggle}
         aria-label={open ? "Fermer la réservation de démo" : "Réserver une démo"}
         aria-expanded={open}
         className="btn-grain flex size-14 cursor-pointer items-center justify-center rounded-full bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-3px_5px_0_rgba(87,18,58,0.35),0_10px_20px_-10px_rgba(255,31,120,0.55)] transition-[box-shadow,transform] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] after:content-[''] after:absolute after:inset-0 after:z-[-1] after:rounded-[inherit] after:bg-brand-900/25 after:opacity-0 after:transition-opacity after:duration-500 hover:after:opacity-100 active:scale-90 active:shadow-[inset_0_2px_4px_0_rgba(87,18,58,0.45),inset_0_-1px_0_0_rgba(255,255,255,0.15)]"
