@@ -45,7 +45,7 @@ export function HowItWorks() {
         {steps.map((step, i) => (
           <div key={step.title} className="contents">
             <Reveal delay={i * 0.1} className="h-full">
-              <div className={`flex h-full flex-col rounded-3xl p-7 ${step.wrap}`}>
+              <div className={`flex h-full flex-col rounded-3xl p-6 ${step.wrap}`}>
                 <span
                   className={`flex size-11 items-center justify-center rounded-full ${step.icon_wrap}`}
                 >

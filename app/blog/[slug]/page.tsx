@@ -107,7 +107,7 @@ export default async function BlogArticlePage(
                 <Reveal key={other.slug} delay={i * 0.06}>
                   <Link
                     href={`/blog/${other.slug}`}
-                    className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100"
+                    className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100"
                   >
                     <p className="text-lg font-bold text-ink">{other.title}</p>
                     <p className="mt-2 line-clamp-2 text-sm text-ink-soft">

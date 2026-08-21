@@ -129,7 +129,7 @@ export default async function SolutionPage(
             >
               {pillars.map((pillar, i) => (
                 <Reveal key={pillar.title} delay={i * 0.08}>
-                  <div className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100">
+                  <div className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100">
                     <p className="text-sm font-bold text-brand-100 transition-colors duration-300 group-hover:text-brand-400">
                       {String(i + 1).padStart(2, "0")}
                     </p>
@@ -172,7 +172,7 @@ export default async function SolutionPage(
               <Reveal key={other.slug} delay={i * 0.06}>
                 <Link
                   href={`/nos-solutions/${other.slug}`}
-                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-7 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100"
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-card p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-brand-100"
                 >
                   <span className="flex size-12 items-center justify-center rounded-full bg-brand-50 text-brand-600 transition-transform duration-300 ease-out group-hover:-rotate-6 group-hover:scale-110">
                     <OtherIcon weight="duotone" className="size-6" />
