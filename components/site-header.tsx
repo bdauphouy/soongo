@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { solutionCardStyles, solutionHref, solutions } from "@/lib/solutions";
+import { pageSolutions, solutionCardStyles, solutionHref } from "@/lib/solutions";
 import logo from "@/public/brand/logo-soongo.png";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
@@ -109,16 +109,15 @@ export function SiteHeader() {
             }`}
           >
             <div className="grid grid-cols-4 gap-3">
-              {solutions.map((solution, i) => {
+              {pageSolutions.map((solution, i) => {
                 const style = solutionCardStyles[i];
                 const Icon = solution.icon;
-                const isAssist = solution.slug === "go-assist";
 
                 return (
                   <Link
                     key={solution.slug}
                     href={solutionHref(solution.slug)}
-                    className={`group/tile flex flex-col rounded-2xl p-4 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 ${style.wrap} ${style.span}`}
+                    className={`group/tile flex flex-col rounded-2xl p-4 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1 ${style.wrap}`}
                   >
                     <span
                       className={`flex size-9 items-center justify-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover/tile:scale-110 group-hover/tile:-rotate-6 ${style.icon}`}
@@ -136,17 +135,15 @@ export function SiteHeader() {
                     >
                       {solution.description}
                     </p>
-                    {!isAssist && (
-                      <span
-                        className={`mt-3 inline-flex items-center gap-1 text-xs font-semibold ${style.link}`}
-                      >
-                        Découvrir
-                        <ArrowRight
-                          weight="bold"
-                          className="size-3.5 transition-transform duration-300 ease-out group-hover/tile:translate-x-1"
-                        />
-                      </span>
-                    )}
+                    <span
+                      className={`mt-3 inline-flex items-center gap-1 text-xs font-semibold ${style.link}`}
+                    >
+                      Découvrir
+                      <ArrowRight
+                        weight="bold"
+                        className="size-3.5 transition-transform duration-300 ease-out group-hover/tile:translate-x-1"
+                      />
+                    </span>
                   </Link>
                 );
               })}
@@ -168,7 +165,7 @@ export function SiteHeader() {
                     />
                   </summary>
                   <div className="flex flex-col gap-1 pb-2 pl-3">
-                    {solutions.map((solution) => (
+                    {pageSolutions.map((solution) => (
                       <a
                         key={solution.slug}
                         href={solutionHref(solution.slug)}
