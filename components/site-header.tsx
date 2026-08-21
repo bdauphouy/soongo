@@ -6,7 +6,7 @@ import logo from "@/public/brand/logo-soongo.png";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const links = [
   { href: "/#ecosysteme", label: "Écosystème" },
@@ -16,8 +16,35 @@ const links = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [menuRendered, setMenuRendered] = useState(false);
   const [solutionsOpen, setSolutionsOpen] = useState(false);
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
   const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const headerRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+
+    function handleClickOutside(e: MouseEvent) {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  function handleToggleMenu() {
+    setOpen((v) => {
+      const next = !v;
+      if (next) {
+        setMenuRendered(true);
+        setMobileSolutionsOpen(false);
+      }
+      return next;
+    });
+  }
 
   function openSolutions() {
     if (closeTimeout.current) clearTimeout(closeTimeout.current);
@@ -30,7 +57,7 @@ export function SiteHeader() {
   }
 
   return (
-    <header className="sticky z-50 px-4 sm:px-6 lg:px-0 top-4">
+    <header ref={headerRef} className="sticky z-50 px-4 sm:px-6 lg:px-0 top-4">
       <div className="relative mx-auto max-w-7xl lg:px-8">
         <div className="flex h-16 items-center justify-between rounded-[2rem] border border-border/70 bg-card/90 pl-5 pr-2.5 shadow-[0_4px_16px_-8px_rgba(87,18,58,0.18)] backdrop-blur-md sm:pr-3 lg:h-[4.25rem] lg:pl-6">
           <Link
@@ -86,7 +113,7 @@ export function SiteHeader() {
 
           <button
             type="button"
-            onClick={() => setOpen((v) => !v)}
+            onClick={handleToggleMenu}
             className="flex size-11 items-center justify-center rounded-full text-ink transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] active:scale-90 lg:hidden"
             aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
             aria-expanded={open}
@@ -150,31 +177,60 @@ export function SiteHeader() {
         </div>
 
         {/* Mobile menu — pops out of the island like a bubble */}
-        {open && (
+        {menuRendered && (
           <div className="absolute inset-x-0 top-full z-40 mt-3 lg:hidden">
-            <div className="animate-bounce-in origin-top rounded-[2rem] border border-border bg-card p-4 shadow-2xl shadow-ink/10">
+            <div
+              onAnimationEnd={() => {
+                if (!open) setMenuRendered(false);
+              }}
+              className={`${open ? "animate-bounce-in" : "animate-bounce-out"} origin-top rounded-[2rem] border border-border bg-card p-4 shadow-2xl shadow-ink/10`}
+            >
               <nav className="flex flex-col gap-1">
-                <details className="group/details">
-                  <summary className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-3 py-3 text-base font-medium text-ink-soft hover:bg-surface-soft hover:text-ink">
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => setMobileSolutionsOpen((v) => !v)}
+                    aria-expanded={mobileSolutionsOpen}
+                    className="flex w-full cursor-pointer items-center justify-between rounded-2xl px-3 py-3 text-base font-medium text-ink-soft hover:bg-surface-soft hover:text-ink"
+                  >
                     Solutions
                     <CaretDown
                       weight="bold"
-                      className="size-3.5 transition-transform duration-300 group-open/details:rotate-180"
+                      className={`size-3.5 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] ${
+                        mobileSolutionsOpen ? "rotate-180" : ""
+                      }`}
                     />
-                  </summary>
-                  <div className="flex flex-col gap-1 pb-2 pl-3">
-                    {pageSolutions.map((solution) => (
-                      <a
-                        key={solution.slug}
-                        href={solutionHref(solution.slug)}
-                        onClick={() => setOpen(false)}
-                        className="rounded-xl px-3 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-soft hover:text-ink"
-                      >
-                        {solution.name}
-                      </a>
-                    ))}
+                  </button>
+                  <div
+                    className="grid transition-[grid-template-rows] duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+                    style={{
+                      gridTemplateRows: mobileSolutionsOpen ? "1fr" : "0fr",
+                    }}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="flex flex-col gap-1 pb-2 pl-3">
+                        {pageSolutions.map((solution) => {
+                          const Icon = solution.icon;
+
+                          return (
+                            <a
+                              key={solution.slug}
+                              href={solutionHref(solution.slug)}
+                              onClick={() => setOpen(false)}
+                              className="flex items-center gap-2.5 rounded-xl px-3 py-2.5 text-sm font-medium text-ink-soft hover:bg-surface-soft hover:text-ink"
+                            >
+                              <Icon
+                                weight="duotone"
+                                className="size-4 shrink-0 text-brand-600"
+                              />
+                              {solution.name}
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </div>
                   </div>
-                </details>
+                </div>
 
                 {links.map((link) => (
                   <a
