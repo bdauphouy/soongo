@@ -18,6 +18,20 @@ const testimonials = [
     role: "Directeur des opérations, Delmas Environnement",
     avatarSeed: "nassim-cherif-soongo",
   },
+  {
+    quote:
+      "Go Assist a désengorgé notre standard : les conducteurs ont une réponse à toute heure, sans qu'on ait à mobiliser quelqu'un le soir ou le week-end.",
+    name: "Elise Rambert",
+    role: "RH & mobilité, Groupe Vasco Transport",
+    avatarSeed: "elise-rambert-soongo",
+  },
+  {
+    quote:
+      "Aucun boîtier à installer, aucune maintenance : on a la géolocalisation et le suivi d'éco-conduite de tout le parc dès la première semaine.",
+    name: "Karim Belaïd",
+    role: "Responsable exploitation, Fret Occitan",
+    avatarSeed: "karim-belaid-soongo",
+  },
 ];
 
 export function Testimonials() {
@@ -32,25 +46,25 @@ export function Testimonials() {
         </h2>
       </Reveal>
 
-      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
+      <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {testimonials.map((t, i) => (
           <Reveal key={t.name} delay={i * 0.1}>
-            <figure className="flex h-full flex-col rounded-3xl border border-border border-b-4 border-b-brand-600 bg-card p-8">
-              <Quotes weight="fill" className="size-7 text-brand-200" />
-              <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-ink">
+            <figure className="flex h-full flex-col rounded-2xl border border-border border-b-4 border-b-brand-600 bg-card p-5">
+              <Quotes weight="fill" className="size-5 text-brand-200" />
+              <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-ink">
                 {t.quote}
               </blockquote>
-              <figcaption className="mt-6 flex items-center gap-3">
+              <figcaption className="mt-4 flex items-center gap-2.5">
                 <Image
                   src={`https://i.pravatar.cc/80?u=${t.avatarSeed}`}
                   alt={t.name}
-                  width={44}
-                  height={44}
+                  width={36}
+                  height={36}
                   className="rounded-full"
                 />
                 <div>
-                  <p className="text-sm font-semibold text-ink">{t.name}</p>
-                  <p className="text-sm text-ink-soft">{t.role}</p>
+                  <p className="text-xs font-semibold text-ink">{t.name}</p>
+                  <p className="text-xs text-ink-soft">{t.role}</p>
                 </div>
               </figcaption>
             </figure>
