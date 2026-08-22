@@ -28,7 +28,7 @@ export function SolutionsSection() {
           const content = (
             <article
               id={isAssist ? "go-assist" : undefined}
-              className={`group flex h-full flex-col rounded-3xl p-6 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 ${style.wrap}`}
+              className={`group flex h-full flex-col rounded-3xl p-6 transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-1.5 ${isAssist ? "scroll-mt-28" : ""} ${style.wrap}`}
             >
               <span
                 className={`flex size-11 items-center justify-center rounded-full transition-transform duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:scale-110 group-hover:rotate-6 ${style.icon}`}
