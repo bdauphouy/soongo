@@ -1,7 +1,7 @@
-import Image from "next/image";
-import Link from "next/link";
 import { solutions } from "@/lib/solutions";
 import logo from "@/public/brand/logo-soongo.png";
+import Image from "next/image";
+import Link from "next/link";
 
 export function SiteFooter() {
   return (
@@ -9,10 +9,15 @@ export function SiteFooter() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-2">
-            <Image src={logo} alt="SoonGo" height={22} className="h-5.5 w-auto" />
+            <Image
+              src={logo}
+              alt="SoonGo"
+              height={22}
+              className="h-5.5 w-auto"
+            />
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft">
-              La plateforme qui centralise, automatise et optimise la
-              gestion de votre flotte automobile.
+              La plateforme qui centralise, automatise et optimise la gestion de
+              votre flotte automobile.
             </p>
           </div>
 
@@ -41,19 +46,11 @@ export function SiteFooter() {
             <ul className="mt-4 flex flex-col gap-3 text-sm text-ink-soft">
               <li>
                 <a
-                  href="mailto:demo@soongo.co"
+                  href="mailto:hello@soongo.co"
                   className="transition-colors hover:text-brand-600"
                 >
-                  demo@soongo.co
+                  hello@soongo.co
                 </a>
-              </li>
-              <li>
-                <Link
-                  href="https://soongo.co"
-                  className="transition-colors hover:text-brand-600"
-                >
-                  soongo.co
-                </Link>
               </li>
             </ul>
           </div>
