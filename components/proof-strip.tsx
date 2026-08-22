@@ -40,7 +40,7 @@ export function ProofStrip() {
                 sizes="(min-width: 640px) 33vw, 100vw"
                 className="object-cover transition-transform duration-700 ease-out group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/55 to-ink/20 transition-opacity duration-500 ease-out group-hover:from-ink/95 group-hover:via-ink/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/20 to-transparent" />
 
               <div className="relative p-8">
                 <p className="text-5xl font-bold text-white sm:text-6xl">
