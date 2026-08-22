@@ -3,7 +3,8 @@
 import { DemoButton } from "@/components/demo-button";
 import { pageSolutions, solutionHref } from "@/lib/solutions";
 import { useDismissableOverlay } from "@/lib/use-dismissable-overlay";
-import logo from "@/public/brand/logo-soongo.png";
+import { SolutionName } from "@/components/solution-name";
+import logo from "@/public/brand/logo.png";
 import { ArrowRight, CaretDown, List, X } from "@phosphor-icons/react/dist/ssr";
 import Image from "next/image";
 import Link from "next/link";
@@ -149,7 +150,12 @@ export function SiteHeader() {
                     >
                       <Icon weight="duotone" className="size-4.5" />
                     </span>
-                    <p className="mt-3 text-sm font-bold">{solution.name}</p>
+                    <p className="mt-3 text-sm font-bold">
+                      <SolutionName
+                        name={solution.name}
+                        invert={style.wrap.includes("text-white")}
+                      />
+                    </p>
                     <p
                       className={`mt-0.5 text-xs font-semibold ${style.tagline}`}
                     >
@@ -221,7 +227,7 @@ export function SiteHeader() {
                                 weight="duotone"
                                 className="size-4 shrink-0 text-brand-600"
                               />
-                              {solution.name}
+                              <SolutionName name={solution.name} />
                             </a>
                           );
                         })}
@@ -241,11 +247,7 @@ export function SiteHeader() {
                   </a>
                 ))}
               </nav>
-              <DemoButton
-                withArrow
-                className="mt-4 w-full"
-                onClick={closeMenu}
-              >
+              <DemoButton withArrow className="mt-4 w-full" onClick={closeMenu}>
                 Demander une démo
               </DemoButton>
             </div>

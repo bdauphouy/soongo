@@ -1,5 +1,6 @@
 import { solutions } from "@/lib/solutions";
-import logo from "@/public/brand/logo-soongo.png";
+import { SolutionName } from "@/components/solution-name";
+import logo from "@/public/brand/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -34,7 +35,7 @@ export function SiteFooter() {
                     }
                     className="text-sm text-ink-soft transition-colors hover:text-brand-600"
                   >
-                    {solution.name}
+                    <SolutionName name={solution.name} />
                   </Link>
                 </li>
               ))}

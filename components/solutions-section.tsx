@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { solutionHref, solutions } from "@/lib/solutions";
 import { Reveal } from "@/components/reveal";
+import { SolutionName } from "@/components/solution-name";
 
 export function SolutionsSection() {
   return (
@@ -36,7 +37,10 @@ export function SolutionsSection() {
                 <Icon weight="duotone" className="size-6" />
               </span>
               <h3 className="mt-5 text-xl font-bold">
-                {solution.name}
+                <SolutionName
+                  name={solution.name}
+                  invert={style.wrap.includes("text-white")}
+                />
               </h3>
               <p className={`mt-1 text-sm font-semibold ${style.tagline}`}>
                 {solution.tagline}

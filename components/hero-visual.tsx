@@ -1,4 +1,5 @@
 import { Robot, TrendDown } from "@phosphor-icons/react/dist/ssr";
+import { SolutionName } from "@/components/solution-name";
 
 const bars = [38, 52, 44, 61, 55, 72, 64];
 
@@ -93,7 +94,7 @@ export function HeroVisual() {
               <div className="flex items-center gap-1.5">
                 <p className="text-xs font-bold text-ink">Oslo</p>
                 <span className="rounded-full bg-brand-50 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-brand-600">
-                  Go Assist
+                  <SolutionName name="Go Assist" className="gap-1" />
                 </span>
               </div>
               <p className="mt-1 text-xs text-ink-soft">

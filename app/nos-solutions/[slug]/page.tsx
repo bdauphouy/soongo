@@ -5,6 +5,7 @@ import { Reveal } from "@/components/reveal";
 import { AnimatedStat } from "@/components/animated-stat";
 import { DemoButton } from "@/components/demo-button";
 import { TimelineFeatures } from "@/components/timeline-features";
+import { SolutionName } from "@/components/solution-name";
 import { Button } from "@/components/ui/button";
 import { pageSolutions, solutions } from "@/lib/solutions";
 import type { Metadata } from "next";
@@ -69,7 +70,7 @@ export default async function SolutionPage(
 
           <Reveal delay={0.1}>
             <h1 className="mt-8 max-w-3xl text-4xl font-bold leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              {solution.name}
+              <SolutionName name={solution.name} />
             </h1>
           </Reveal>
           <Reveal delay={0.15}>
@@ -151,7 +152,11 @@ export default async function SolutionPage(
         <TimelineFeatures
           features={solution.features}
           eyebrow="Le détail"
-          title={`Ce que ${solution.name} change pour vous.`}
+          title={
+            <>
+              Ce que <SolutionName name={solution.name} /> change pour vous.
+            </>
+          }
         />
       </section>
 
@@ -178,7 +183,7 @@ export default async function SolutionPage(
                     <OtherIcon weight="duotone" className="size-6" />
                   </span>
                   <p className="mt-5 text-lg font-bold text-ink">
-                    {other.name}
+                    <SolutionName name={other.name} />
                   </p>
                   <p className="mt-1 text-sm text-ink-soft">
                     {other.tagline}
