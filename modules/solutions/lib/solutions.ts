@@ -4,7 +4,7 @@ import {
   Robot,
   Sparkle,
   SteeringWheel,
-} from "@phosphor-icons/react/dist/ssr";
+} from "@phosphor-icons/react/ssr";
 
 export const solutions = [
   {

@@ -1,4 +1,4 @@
-import { DemoButton } from "@/components/demo-button";
+import { DemoButton } from "@/modules/booking/components/demo-button";
 import { Reveal } from "@/components/reveal";
 
 export function CtaBand() {

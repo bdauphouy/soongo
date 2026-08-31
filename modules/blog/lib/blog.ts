@@ -8,7 +8,7 @@ import {
   TrendUp,
   UsersThree,
   Wallet,
-} from "@phosphor-icons/react/dist/ssr";
+} from "@phosphor-icons/react/ssr";
 import type { Icon } from "@phosphor-icons/react";
 
 export type BlogCategory = {

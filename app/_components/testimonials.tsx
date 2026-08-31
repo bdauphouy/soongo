@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Quotes } from "@phosphor-icons/react/dist/ssr";
+import { Quotes } from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/reveal";
 
 // Témoignages provisoires, à remplacer par de vrais retours clients.

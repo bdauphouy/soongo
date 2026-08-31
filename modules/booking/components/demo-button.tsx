@@ -1,17 +1,17 @@
 "use client";
 
+import type { PropsWithChildren } from "react";
 import { Button } from "@/components/ui/button";
-import { openBookingDemo } from "@/lib/booking-demo";
+import { openBookingDemo } from "@/modules/booking/lib/booking-demo";
 
-type DemoButtonProps = {
+type Props = PropsWithChildren<{
   variant?: "primary" | "secondary" | "ghost" | "invert";
   withArrow?: boolean;
   className?: string;
   onClick?: () => void;
-  children: React.ReactNode;
-};
+}>;
 
-export function DemoButton({ onClick, ...props }: DemoButtonProps) {
+export function DemoButton({ onClick, ...props }: Props) {
   return (
     <Button
       {...props}

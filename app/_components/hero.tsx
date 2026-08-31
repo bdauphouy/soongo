@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { DemoButton } from "@/components/demo-button";
-import { HeroVisual } from "@/components/hero-visual";
+import { DemoButton } from "@/modules/booking/components/demo-button";
+import { HeroVisual } from "./hero-visual";
 import { Reveal } from "@/components/reveal";
 
 export function Hero() {

@@ -1,10 +1,10 @@
-import { Hero } from "@/components/hero";
-import { ProofStrip } from "@/components/proof-strip";
-import { SolutionsSection } from "@/components/solutions-section";
-import { ImageBanner } from "@/components/image-banner";
-import { EcosystemMarquee } from "@/components/ecosystem-marquee";
-import { HowItWorks } from "@/components/how-it-works";
-import { Testimonials } from "@/components/testimonials";
+import { Hero } from "./_components/hero";
+import { ProofStrip } from "./_components/proof-strip";
+import { SolutionsSection } from "@/modules/solutions/components/solutions-section";
+import { ImageBanner } from "./_components/image-banner";
+import { EcosystemMarquee } from "./_components/ecosystem-marquee";
+import { HowItWorks } from "./_components/how-it-works";
+import { Testimonials } from "./_components/testimonials";
 
 export default function Home() {
   return (

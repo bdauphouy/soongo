@@ -1,4 +1,4 @@
-import { ArrowRight, ChartLineUp, Plug, Sparkle } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight, ChartLineUp, Plug, Sparkle } from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/reveal";
 
 const steps = [

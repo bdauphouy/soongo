@@ -1,12 +1,11 @@
 import { AnimatedNumber } from "@/components/animated-number";
 
-export function AnimatedStat({
-  value,
-  delay = 0,
-}: {
+type Props = {
   value: string;
   delay?: number;
-}) {
+};
+
+export function AnimatedStat({ value, delay = 0 }: Props) {
   const match = value.match(/^(\d+)(.*)$/);
 
   if (!match) return <>{value}</>;

@@ -2,11 +2,15 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/reveal";
-import { blogCategories, type BlogArticle } from "@/lib/blog";
+import { blogCategories, type BlogArticle } from "@/modules/blog/lib/blog";
 
-export function BlogGrid({ articles }: { articles: readonly BlogArticle[] }) {
+type Props = {
+  articles: readonly BlogArticle[];
+};
+
+export function BlogGrid({ articles }: Props) {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const filtered = activeCategory

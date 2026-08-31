@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { solutionHref, solutions } from "@/lib/solutions";
+import { ArrowRight } from "@phosphor-icons/react/ssr";
+import { solutionHref, solutions } from "@/modules/solutions/lib/solutions";
 import { Reveal } from "@/components/reveal";
 import { SolutionName } from "@/components/solution-name";
 

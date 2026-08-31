@@ -6,7 +6,7 @@ import {
   ShieldCheck,
   Truck,
   Wrench,
-} from "@phosphor-icons/react/dist/ssr";
+} from "@phosphor-icons/react/ssr";
 import { Reveal } from "@/components/reveal";
 
 const integrations = [
@@ -48,7 +48,7 @@ export function EcosystemMarquee() {
 
       <Reveal
         delay={0.1}
-        className="mt-10 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
+        className="mt-10 overflow-hidden mask-[linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]"
       >
         <div className="flex w-max gap-4 animate-marquee">
           {[...integrations, ...integrations].map((item, i) => (

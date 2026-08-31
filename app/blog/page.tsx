@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/reveal";
-import { BlogGrid } from "@/components/blog-grid";
-import { blogArticles } from "@/lib/blog";
+import { BlogGrid } from "@/modules/blog/components/blog-grid";
+import { blogArticles } from "@/modules/blog/lib/blog";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

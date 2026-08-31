@@ -1,10 +1,10 @@
-import { solutions } from "@/lib/solutions";
+import { solutions } from "@/modules/solutions/lib/solutions";
 import { SolutionName } from "@/components/solution-name";
 import logo from "@/public/brand/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 
-export function SiteFooter() {
+export function Footer() {
   return (
     <footer className="border-t border-border bg-surface-soft">
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">

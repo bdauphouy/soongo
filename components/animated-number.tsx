@@ -8,17 +8,19 @@ import {
   useReducedMotion,
 } from "motion/react";
 
+type Props = {
+  value: number;
+  suffix?: string;
+  duration?: number;
+  delay?: number;
+};
+
 export function AnimatedNumber({
   value,
   suffix = "",
   duration = 1.4,
   delay = 0,
-}: {
-  value: number;
-  suffix?: string;
-  duration?: number;
-  delay?: number;
-}) {
+}: Props) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.6 });
   const reduce = useReducedMotion();

@@ -1,4 +1,4 @@
-import { Robot, TrendDown } from "@phosphor-icons/react/dist/ssr";
+import { Robot, TrendDown } from "@phosphor-icons/react/ssr";
 import { SolutionName } from "@/components/solution-name";
 
 const bars = [38, 52, 44, 61, 55, 72, 64];
@@ -12,11 +12,11 @@ const vehicles = [
 export function HeroVisual() {
   return (
     <div
-      className="relative mx-auto w-full max-w-[480px] pointer-events-none"
+      className="relative mx-auto w-full max-w-120 pointer-events-none"
       style={{ perspective: 1000 }}
     >
       <div
-        className="[transform-style:preserve-3d]"
+        className="transform-3d"
         style={{ transform: "rotateX(8deg) rotateY(-14deg) rotateZ(-1deg)" }}
       >
         <div
@@ -84,7 +84,7 @@ export function HeroVisual() {
 
         <div className="animate-float absolute -bottom-7 -left-6 w-60 sm:-left-10">
           <div className="animate-bounce-in relative flex items-start gap-3 rounded-[1.4rem] rounded-bl-md border border-border/70 bg-card/95 p-4 shadow-xl shadow-ink/10 backdrop-blur-sm">
-            <span className="relative flex size-10 shrink-0 items-center justify-center rounded-full bg-gradient-to-b from-brand-500 to-brand-600 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-2px_3px_0_rgba(87,18,58,0.35)]">
+            <span className="relative flex size-10 shrink-0 items-center justify-center rounded-full bg-linear-to-b from-brand-500 to-brand-600 text-white shadow-[inset_0_1px_0_0_rgba(255,255,255,0.35),inset_0_-2px_3px_0_rgba(87,18,58,0.35)]">
               <Robot weight="fill" className="size-5" />
               <span className="absolute -right-0.5 -top-0.5 flex size-3 items-center justify-center rounded-full bg-card">
                 <span className="size-1.5 animate-pulse rounded-full bg-emerald-500" />
